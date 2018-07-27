@@ -23,43 +23,43 @@ class Navbar extends Component {
             </a>
           </div>
         </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="field is-grouped">
-              <p class="control">
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="field is-grouped">
+              <p className="control">
                 <a
-                  class="bd-tw-button button is-primary"
+                  className="bd-tw-button button is-primary"
                   data-social-network="Twitter"
                   data-social-action="tweet"
                   data-social-target="http://localhost:4000"
                   target="_blank"
                   href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms"
                 >
-                  <span class="icon">
-                    <i class="fab fa-twitter" />
+                  <span className="icon">
+                    <i className="fab fa-twitter" />
                   </span>
                   <span>Tweet</span>
                 </a>
               </p>
-              <p class="control">
+              <p className="control">
                 <a
-                  class="bd-tw-button button is-primary"
+                  className="bd-tw-button button is-primary"
                   data-social-network="Facebook"
                   data-social-action="facebook"
                   data-social-target="http://localhost:4000"
                   target="_blank"
                   href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms"
                 >
-                  <span class="icon">
-                    <i class="fab fa-facebook" />
+                  <span className="icon">
+                    <i className="fab fa-facebook" />
                   </span>
                   <span>Facebook</span>
                 </a>
               </p>
-              <p class="control">
-                <Link class="bd-tw-button button is-primary" to="/login">
-                  <span class="icon">
-                    <i class="fas fa-sign-in-alt" />
+              <p className="control">
+                <Link className="bd-tw-button button is-primary" to="/login">
+                  <span className="icon">
+                    <i className="fas fa-sign-in-alt" />
                   </span>
                   <span>Login</span>
                 </Link>
