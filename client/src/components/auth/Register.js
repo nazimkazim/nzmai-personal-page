@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import classnames from 'classnames';
 
 class Register extends Component {
   constructor() {
@@ -31,27 +32,33 @@ class Register extends Component {
     axios
       .post('/api/users/register', newUser)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data));
+      .catch(err => this.setState({ errors: err.response.data }));
   }
   render() {
+    const { errors } = this.state;
     return (
       <div className="container" style={{ paddingTop: 100 }}>
         <div className="column is-half is-offset-one-fifth">
           <form onSubmit={this.onSubmit}>
             <div className="field">
               <input
-                className="input"
+                className={classnames('input', {
+                  'is-danger': errors.name
+                })}
                 type="text"
                 name="name"
                 value={this.state.name}
                 onChange={this.onChange}
                 placeholder="Name"
               />
+              {errors.name && <p className="help is-danger">{errors.name}</p>}
             </div>
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <input
-                  className="input"
+                  className={classnames('input', {
+                    'is-danger': errors.email
+                  })}
                   type="email"
                   name="email"
                   value={this.state.email}
@@ -65,6 +72,7 @@ class Register extends Component {
                   <i className="fas fa-check" />
                 </span>
               </p>
+              {errors.email && <p className="help is-danger">{errors.email}</p>}
               <small>
                 This site uses Gravatar, so if you want a profile image, use a
                 gravatar email
@@ -73,7 +81,9 @@ class Register extends Component {
             <div className="field">
               <p className="control has-icons-left">
                 <input
-                  className="input"
+                  className={classnames('input', {
+                    'is-danger': errors.password
+                  })}
                   type="password"
                   name="password"
                   value={this.state.password}
@@ -84,21 +94,30 @@ class Register extends Component {
                   <i className="fas fa-lock" />
                 </span>
               </p>
+              {errors.password && (
+                <p className="help is-danger">{errors.password}</p>
+              )}
             </div>
             <div className="field">
               <p className="control has-icons-left">
                 <input
-                  className="input"
+                  className={classnames('input', {
+                    'is-danger': errors.password2
+                  })}
                   type="password"
                   placeholder="Confirm password"
                   name="password2"
                   onChange={this.onChange}
                   value={this.state.password2}
                 />
+
                 <span className="icon is-small is-left">
                   <i className="fas fa-lock" />
                 </span>
               </p>
+              {errors.password2 && (
+                <p className="help is-danger">{errors.password2}</p>
+              )}
             </div>
             <div className="field">
               <input
