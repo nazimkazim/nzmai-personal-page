@@ -48,7 +48,7 @@ class Navbar extends Component {
                   data-social-action="facebook"
                   data-social-target="http://localhost:4000"
                   target="_blank"
-                  href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms"
+                  href="https://facebook.com/turdiev1"
                 >
                   <span className="icon">
                     <i className="fab fa-facebook" />
