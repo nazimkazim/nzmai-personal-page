@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+import classnames from 'classnames';
 
 class Login extends Component {
   constructor() {
@@ -13,19 +17,33 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
   onSubmit(e) {
-    //e.preventDefault();
-    const user = {
+    e.preventDefault();
+    const userData = {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(user);
+
+    this.props.loginUser(userData);
   }
+
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <div className="container" style={{ paddingTop: 100 }}>
@@ -34,7 +52,9 @@ class Login extends Component {
               <div className="field">
                 <p className="control has-icons-left has-icons-right">
                   <input
-                    className="input"
+                    className={classnames('input', {
+                      'is-danger': errors.email
+                    })}
                     type="email"
                     name="email"
                     value={this.state.email}
@@ -52,11 +72,16 @@ class Login extends Component {
                   This site uses Gravatar, so if you want a profile image, use a
                   gravatar email
                 </small>
+                {errors.email && (
+                  <p className="help is-danger">{errors.email}</p>
+                )}
               </div>
               <div className="field">
                 <p className="control has-icons-left">
                   <input
-                    className="input"
+                    className={classnames('input', {
+                      'is-danger': errors.password
+                    })}
                     type="password"
                     name="password"
                     value={this.state.password}
@@ -67,6 +92,9 @@ class Login extends Component {
                     <i className="fas fa-lock" />
                   </span>
                 </p>
+                {errors.password && (
+                  <p className="help is-danger">{errors.password}</p>
+                )}
               </div>
               <div className="field">
                 <input
@@ -83,4 +111,18 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
