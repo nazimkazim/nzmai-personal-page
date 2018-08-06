@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import classnames from 'classnames';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Login extends Component {
   constructor() {
@@ -55,53 +56,24 @@ class Login extends Component {
         <div className="container" style={{ paddingTop: 100 }}>
           <div className="column is-half is-offset-one-fifth">
             <form onSubmit={this.onSubmit}>
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <input
-                    className={classnames('input', {
-                      'is-danger': errors.email
-                    })}
-                    type="email"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    placeholder="Email"
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-envelope" />
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-check" />
-                  </span>
-                </p>
-                <small>
-                  This site uses Gravatar, so if you want a profile image, use a
-                  gravatar email
-                </small>
-                {errors.email && (
-                  <p className="help is-danger">{errors.email}</p>
-                )}
-              </div>
-              <div className="field">
-                <p className="control has-icons-left">
-                  <input
-                    className={classnames('input', {
-                      'is-danger': errors.password
-                    })}
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                    placeholder="Password"
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-lock" />
-                  </span>
-                </p>
-                {errors.password && (
-                  <p className="help is-danger">{errors.password}</p>
-                )}
-              </div>
+              <TextFieldGroup
+                placeholder="Email Address"
+                name="email"
+                type="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                error={errors.email}
+              />
+
+              <TextFieldGroup
+                placeholder="Password"
+                name="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.onChange}
+                error={errors.password}
+              />
+
               <div className="field">
                 <input
                   type="submit"

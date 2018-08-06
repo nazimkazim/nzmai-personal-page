@@ -19,7 +19,11 @@ class Navbar extends Component {
             <i className="fas fa-sign-out-alt" />
           </span>
           <span>
-            <a id="logoutBtnLink" href="#" onClick={this.onLogoutClick.bind(this)}>
+            <a
+              id="logoutBtnLink"
+              href="#"
+              onClick={this.onLogoutClick.bind(this)}
+            >
               Logout
             </a>
           </span>
