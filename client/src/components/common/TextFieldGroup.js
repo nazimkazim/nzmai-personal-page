@@ -11,7 +11,11 @@ const TextFieldGroup = ({
   info,
   type,
   onChange,
-  disabled
+  disabled,
+  iconplaceright,
+  iconright,
+  iconplaceleft,
+  iconleft
 }) => {
   return (
     <div className="field">
@@ -26,12 +30,16 @@ const TextFieldGroup = ({
           onChange={onChange}
           placeholder={placeholder}
           disabled={disabled}
+          iconplaceleft={iconplaceleft}
+          iconplaceright={iconplaceright}
+          iconleft={iconleft}
+          iconright={iconright}
         />
-        <span className="icon is-small is-left">
-          <i className="fas fa-envelope" />
+        <span className={iconplaceleft}>
+          <i className={iconleft} />
         </span>
-        <span className="icon is-small is-right">
-          <i className="fas fa-check" />
+        <span className={iconplaceright}>
+          <i className={iconright} />
         </span>
       </p>
       {info && <small>{info}</small>}
@@ -48,7 +56,11 @@ TextFieldGroup.propTypes = {
   error: PropTypes.string,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.string
+  disabled: PropTypes.string,
+  iconplaceright: PropTypes.string,
+  iconright: PropTypes.string,
+  iconplaceleft: PropTypes.string,
+  iconleft: PropTypes.string
 };
 
 TextFieldGroup.defaultProps = {

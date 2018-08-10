@@ -53,34 +53,42 @@ class Login extends Component {
     return (
       <div>
         <div className="container" style={{ paddingTop: 100 }}>
-          <div className="column is-half is-offset-one-fifth">
-            <form onSubmit={this.onSubmit}>
-              <TextFieldGroup
-                placeholder="Email Address"
-                name="email"
-                type="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                error={errors.email}
-              />
-
-              <TextFieldGroup
-                placeholder="Password"
-                name="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.onChange}
-                error={errors.password}
-              />
-
-              <div className="field">
-                <input
-                  type="submit"
-                  value="Submit"
-                  className="button is-medium is-primary is-fullwidth"
+          <div className="columns is-centered">
+            <div className="column has-text-centered is-half">
+              <form onSubmit={this.onSubmit}>
+                <TextFieldGroup
+                  placeholder="Email Address"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                  iconplaceleft="icon is-small is-left"
+                  iconleft="fas fa-envelope"
+                  iconplaceright="icon is-small is-right"
+                  iconright ="fas fa-check"
                 />
-              </div>
-            </form>
+
+                <TextFieldGroup
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                  iconplaceleft="icon is-small is-left"
+                  iconleft="fas fa-lock"
+                />
+
+                <div className="field">
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="button is-medium is-primary is-fullwidth"
+                  />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

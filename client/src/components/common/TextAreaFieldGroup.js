@@ -8,7 +8,11 @@ const TextAreaFieldGroup = ({
   value,
   error,
   info,
-  onChange
+  onChange,
+  iconplaceright,
+  iconright,
+  iconplaceleft,
+  iconleft
 }) => {
   return (
     <div className="field">
@@ -21,12 +25,16 @@ const TextAreaFieldGroup = ({
           name={name}
           value={value}
           onChange={onChange}
+          iconplaceleft={iconplaceleft}
+          iconplaceright={iconplaceright}
+          iconleft={iconleft}
+          iconright={iconright}
         />
-        <span className="icon is-small is-left">
-          <i className="fas fa-envelope" />
+        <span className={iconplaceleft}>
+          <i className={iconleft} />
         </span>
-        <span className="icon is-small is-right">
-          <i className="fas fa-check" />
+        <span className={iconplaceright}>
+          <i className={iconright} />
         </span>
       </p>
       {info && <small>{info}</small>}
