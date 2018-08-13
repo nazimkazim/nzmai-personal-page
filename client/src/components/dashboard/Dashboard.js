@@ -20,28 +20,31 @@ class Dashboard extends Component {
     } else {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
-        dashboardContent = <h4>Display profiel</h4>;
+        dashboardContent = <h4>Display profile</h4>;
       } else {
         // User is logged in but has no profile
         dashboardContent = (
-          <div>
-            <p>Wellcome {user.name}</p>
-            <p>You have not yet set up a profile please add some info</p>
-            <Link to="/create-profile">Create profile</Link>
-          </div>
+          <section
+            className="hero is-primary is-medium"
+            style={{ marginTop: 100 }}
+          >
+            <div className="hero-body">
+              <h1 className="title">Wellcome {user.name}</h1>
+              <h2 className="subtitle">
+                <p>You have not yet set up a profile please add some info</p>
+              </h2>
+              <Link
+                to="/create-profile"
+                className="is-link button is-inverted is-outlined"
+              >
+                Create profile
+              </Link>
+            </div>
+          </section>
         );
       }
     }
-    return (
-      <div className="dashboard">
-        <div className="container">
-          <div className="row">
-            <h1>Dashboard</h1>
-            {dashboardContent}
-          </div>
-        </div>
-      </div>
-    );
+    return <div>{dashboardContent}</div>;
   }
 }
 

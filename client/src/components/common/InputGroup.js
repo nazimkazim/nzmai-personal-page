@@ -15,7 +15,7 @@ const InputGroup = ({
 }) => {
   return (
     <div className="field">
-      <div class="control has-icons-left has-icons-right">
+      <div className="control has-icons-left has-icons-right">
         <input
           className={classnames('input', {
             'is-danger': error

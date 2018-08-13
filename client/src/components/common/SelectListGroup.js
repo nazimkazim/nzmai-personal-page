@@ -11,16 +11,15 @@ const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
   return (
     <div className="field">
       <div className="control">
-        <select
-          className={classnames('input', {
+        <div
+          className={classnames('select is-fullwidth is-primary', {
             'is-danger': error
           })}
-          name={name}
-          value={value}
-          onChange={onChange}
         >
-          {selectOptions}
-        </select>
+          <select value={value} name={name} onChange={onChange}>
+            {selectOptions}
+          </select>
+        </div>
       </div>
       {info && <small>{info}</small>}
       {error && <p className="help is-danger">{error}</p>}
